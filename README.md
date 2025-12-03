@@ -70,4 +70,77 @@ The goal is to demonstrate data structures, algorithm design, and object-oriente
 ├── MyHashMap.java        # Custom hash map implementation (separate chaining)
 ├── MyLinkedList.java     # Linked list used for hash buckets
 ├── MyListNode.java       # Nodes used by MyLinkedList
-├── MaxHeap.java          # Generic max-heap used for ranking posts
+├── MaxHeap.java          # Generic max-heap used for ranking post
+```
+## How to Build and Run
+
+### 1. Clone the repository
+- `git clone https://github.com//.git`
+### 2. Compile the Java files
+- `javac *.java`
+### 3. Create an input file
+
+Example (`input.txt`):
+create_user alice
+create_user bob
+follow_user alice bob
+create_post bob p1 photo1
+see_post alice p1
+toggle_like alice p1
+generate_feed alice 5
+sort_posts bob
+
+### 4. Run the program
+
+`Main` expects two command-line arguments: input file and output file.
+- `java Main input.txt output.txt`
+
+### 5. View results
+- `cat output.txt`
+
+---
+
+## Implementation Details
+
+### Custom HashMap
+- Uses separate chaining with linked lists.
+- Provides insert, get, and remove operations.
+- Efficient for key–value storage without Java Collections.
+
+### Custom Linked List
+- Lightweight singly linked list implementation used for buckets.
+
+### MaxHeap
+Used to:
+- rank posts in the feed,
+- sort posts by like count.
+
+### User Model
+Each `User` tracks:
+- followed users,
+- seen posts,
+- liked posts,
+- created posts.
+
+### Application Logic
+`Application` maps commands to operations such as:
+- createUser, followUser, unfollowUser  
+- createPost, seePost, seeAllPostsFromUser  
+- toggleLike, generateFeed, scrollThroughFeed, sortPosts  
+
+---
+
+## Extending the Project
+
+Potential improvements include:
+- Supporting multi-word post content  
+- Adding timestamps for recency-based ranking  
+- Saving data to files or databases  
+- Creating a GUI or REST API on top of the logic  
+
+---
+
+If you encounter issues running the project, ensure:
+- All `.java` files are compiled,
+- `Main.java` contains the `public static void main` method,
+- You pass **two arguments** to `java Main`: input and output paths.
